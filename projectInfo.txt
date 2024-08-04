@@ -1,0 +1,71 @@
+Lexical Specification:
+INT = "int"
+REAL = "real"
+BOO = "bool"
+TRUE = "true"
+FALSE = "false"
+IF = "if"
+WHILE = "while"
+SWITCH = "switch"
+CASE = "case"
+NOT = "!"
+PLUS = "+"
+MINUS = "-"
+MULT = "*"
+DIV = "/"
+GREATER = ">"
+LESS = "<"
+GTEQ = ">="
+LTEQ = "<="
+NOTEQUAL = "<>"
+LPAREN = "("
+RPAREN = ")"
+NUM = (pdigit digit*) + 0
+REALNUM = NUM "." digit digit*
+PUBLIC = "public"
+PRIVATE = "private"
+EQUAL = "="
+COLON = ":"
+COMMA = ","
+SEMICOLON = ";"
+LBRACE = "{"
+RBRACE = "}"
+ID = letter (letter + digit)*
+
+Gramatical Specification:
+program -> global_vars body
+global_vars -> ε
+global_vars -> var_decl_list
+var_decl_list -> var_decl
+var_decl_list -> var_decl var_decl_list
+var_decl -> var_list COLON type_name SEMICOLON
+var_list -> ID
+var_list -> ID COMMA var_list
+type_name -> INT
+type_name -> REAL
+type_name -> BOOL
+body -> LBRACE stmt_list RBRACE
+stmt_list -> stmt
+stmt_list -> stmt stmt_list
+stmt -> assignment_stmt
+stmt -> if_stmt
+stmt -> while_stmt
+stmt -> switch_stmt
+assignment_stmt -> ID EQUAL expression SEMICOLON
+expression -> primary
+expression -> binary_operator expression expression
+expression -> unary_operator expression
+unary_operator -> NOT
+binary_operator -> PLUS | MINUS | MULT | DIV
+binary_operator -> GREATER | LESS | GTEQ | LTEQ | EQUAL | NOTEQUAL
+primary -> ID
+primary -> NUM
+primary -> REALNUM
+primary -> TRUE
+primary -> FALSE
+if_stmt -> IF LPAREN expression RPAREN body
+while_stmt -> WHILE LPAREN expression RPAREN body
+switch_stmt -> SWITCH LPAREN expression RPAREN LBRACE case_list RBRACE
+case_list -> case
+case_list -> case case_list
+case -> CASE NUM COLON body
