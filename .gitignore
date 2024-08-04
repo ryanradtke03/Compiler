@@ -1,0 +1,49 @@
+#Ignore binary files and build artifacts
+*.exe
+*.out
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+#Ignore CMake build directory
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+
+#Ignore user-specific files
+.vscode/
+.idea/
+*.swp
+
+#Ignore compiled files and libraries
+*.class
+*.pyc
+*.pyo
+*.jar
+
+#Ignore logs and databases
+*.log
+*.sql
+*.sqlite
+
+#Ignore other temporary files
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+*.rej
+
+#Ignore generated files
+*.gch
+*.pch
+
+#Ignore specific directories
+out/
